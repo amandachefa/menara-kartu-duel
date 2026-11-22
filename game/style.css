@@ -1,0 +1,312 @@
+/* style.css — tampilan Menara Kartu: meja kayu hijau gelap, kartu warna-warni,
+   menara dengan bar HP besar. Semua warna/font sistem lokal, tanpa aset eksternal. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Segoe UI", Verdana, Geneva, Tahoma, sans-serif;
+  background: #1d2b1f;
+  color: #f5f0e1;
+  overflow: hidden;
+}
+
+#app {
+  width: 1280px;
+  height: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 50% 30%, #2e5233 0%, #22401f 55%, #1a2f18 100%);
+  border-left: 10px solid #5d3a1a;
+  border-right: 10px solid #5d3a1a;
+  position: relative;
+}
+
+/* ---------- Top bar ---------- */
+#topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 2px solid rgba(245, 240, 225, 0.15);
+}
+
+.brand { font-size: 22px; font-weight: 900; letter-spacing: 2px; color: #f7d774; }
+.brand span { font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #f5f0e1; }
+
+.hud { display: flex; gap: 14px; align-items: center; }
+.hud-item {
+  background: #10240f;
+  border: 2px solid #f7d774;
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-size: 17px;
+  font-weight: 800;
+}
+.hud-energy { display: flex; gap: 10px; align-items: center; }
+#energy-pips { display: flex; gap: 4px; }
+.pip {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: #3a4a3c; border: 1px solid #7a8a7c;
+}
+.pip-on { background: #ffd23e; border-color: #fff3b0; box-shadow: 0 0 6px #ffd23e; }
+
+/* ---------- Meja ---------- */
+#table { flex: 1; display: flex; flex-direction: column; padding: 6px 16px; gap: 4px; }
+
+#towers-row { display: flex; gap: 12px; align-items: stretch; }
+
+.tower-slot { flex: 1; display: flex; justify-content: center; }
+
+.tower {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.30);
+  border: 2px solid rgba(245, 240, 225, 0.25);
+  border-radius: 12px;
+  padding: 6px 12px 8px;
+  text-align: center;
+  position: relative;
+}
+.tower-label { font-size: 13px; font-weight: 800; letter-spacing: 2px; color: #f7d774; }
+.tower-art { color: #d8c49a; line-height: 0; margin: 2px 0; }
+.tower-player .tower-art { color: #8fd0ff; }
+.tower-enemy .tower-art { color: #ff9d8a; }
+
+.hp-bar {
+  height: 20px;
+  background: #3d0c0c;
+  border: 2px solid #f5f0e1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  transition: width 0.5s ease;
+}
+.hp-text { font-size: 19px; font-weight: 900; margin-top: 3px; }
+.hp-heart { color: #ff5a5a; vertical-align: -2px; }
+.tower-shield, .tower-trap {
+  font-size: 13px; font-weight: 700; margin-top: 2px;
+  display: flex; gap: 4px; align-items: center; justify-content: center;
+}
+.tower-shield { color: #7ec8f7; }
+.tower-trap { color: #ffd23e; }
+
+/* ---------- Tengah: niat + kartu terakhir + log ---------- */
+#center-stage {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+#center-stage.pop { animation: pop 0.35s ease; }
+@keyframes pop { 0% { transform: scale(0.96); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+#intent-box {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px dashed rgba(247, 215, 116, 0.6);
+  border-radius: 10px;
+  padding: 4px 10px;
+  text-align: center;
+  min-height: 64px;
+}
+.intent-title { font-size: 11px; font-weight: 800; letter-spacing: 3px; color: #f7d774; }
+.intent-body { display: flex; gap: 8px; align-items: center; justify-content: center; color: var(--intent-color, #fff); }
+.intent-icon { line-height: 0; }
+.intent-verb { font-size: 20px; font-weight: 900; }
+.intent-hint { font-size: 12px; color: #e8e2cf; }
+.intent-empty { font-size: 14px; color: #cfc9b4; padding-top: 18px; }
+
+#center-card { display: flex; align-items: center; justify-content: center; min-height: 64px; }
+.center-played {
+  display: flex; gap: 8px; align-items: center;
+  background: var(--card-light, #fff);
+  border: 2px solid var(--card-dark, #333);
+  border-radius: 10px;
+  padding: 6px 12px;
+  color: #222;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+.center-played-who { font-size: 12px; font-weight: 700; color: #f7d774; max-width: 70px; text-align: right; }
+.center-played-icon { color: var(--card-color); line-height: 0; }
+.center-played-name { font-size: 14px; font-weight: 800; }
+.center-played-value { font-size: 24px; font-weight: 900; color: var(--card-color); }
+.center-played-type {
+  font-size: 11px; font-weight: 800; color: #fff;
+  background: var(--card-color); border-radius: 4px; padding: 2px 6px;
+}
+
+#log-list {
+  list-style: none;
+  width: 100%;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #e8e2cf;
+  max-height: 66px;
+  overflow: hidden;
+}
+#log-list li:first-child { color: #fff; font-weight: 700; }
+
+/* ---------- Tangan ---------- */
+.zone-label {
+  font-size: 12px; font-weight: 800; letter-spacing: 2px;
+  color: #cfc9b4; text-align: center; margin: 2px 0;
+}
+#enemy-hand, #player-hand {
+  display: flex; gap: 10px; justify-content: center;
+  min-height: 170px;
+}
+
+/* ---------- Kartu ---------- */
+.card {
+  width: 104px;
+  height: 164px;
+  border-radius: 10px;
+  background: var(--card-light, #fff);
+  color: #222;
+  border: 3px solid var(--card-dark, #333);
+  position: relative;
+  padding: 6px;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+  animation: deal-in 0.4s ease both;
+  user-select: none;
+}
+@keyframes deal-in { from { transform: translateY(24px) rotate(-3deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
+
+.card-cost {
+  position: absolute; top: -8px; left: -8px;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #ffd23e; color: #222;
+  border: 2px solid #7d6608;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+}
+.card-icon { color: var(--card-color); text-align: center; line-height: 0; margin-top: 10px; }
+.card-name { font-size: 12.5px; font-weight: 800; text-align: center; margin-top: 4px; min-height: 28px; }
+.card-value { font-size: 26px; font-weight: 900; text-align: center; color: var(--card-color); line-height: 1; }
+.card-type {
+  font-size: 11px; font-weight: 800; letter-spacing: 1px; text-align: center;
+  color: #fff; background: var(--card-color);
+  border-radius: 4px; padding: 2px 0; margin-top: 3px;
+}
+.card-text { font-size: 9.5px; line-height: 1.25; text-align: center; color: #444; margin-top: 3px; }
+.card-key {
+  position: absolute; top: 4px; right: 7px;
+  font-size: 10px; font-weight: 800; color: #999;
+}
+
+#player-hand .card.playable { cursor: pointer; }
+#player-hand .card.playable:hover { transform: translateY(-14px) scale(1.05); box-shadow: 0 10px 18px rgba(0, 0, 0, 0.6); }
+#player-hand .card:not(.playable) { filter: grayscale(0.55) brightness(0.75); }
+#player-hand .card { transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease; }
+
+.card-back {
+  width: 76px; height: 108px;
+  background: repeating-linear-gradient(45deg, #6e2c1e 0 10px, #8e3b28 10px 20px);
+  border: 3px solid #f7d774;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #f7d774; gap: 6px;
+}
+.card-back-label { font-size: 10px; font-weight: 900; letter-spacing: 1px; text-align: center; }
+
+/* ---------- Angka melayang ---------- */
+.float-text {
+  position: absolute;
+  top: 30%; left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px; font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  animation: float-up 1.3s ease-out forwards;
+  pointer-events: none;
+  z-index: 20;
+  white-space: nowrap;
+}
+.float-damage { color: #ff6b5e; }
+.float-heal { color: #2ecc71; }
+.float-shield { color: #7ec8f7; }
+.float-trap { color: #ffd23e; }
+@keyframes float-up { 0% { opacity: 0; margin-top: 10px; } 15% { opacity: 1; } 100% { opacity: 0; margin-top: -46px; } }
+
+/* ---------- Bawah ---------- */
+#bottombar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 18px 10px; gap: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border-top: 2px solid rgba(245, 240, 225, 0.15);
+}
+.hint { font-size: 12.5px; color: #cfc9b4; }
+#btn-end-turn {
+  background: #e67e22; color: #fff;
+  border: 3px solid #f7d774; border-radius: 10px;
+  font-size: 18px; font-weight: 900; letter-spacing: 1px;
+  padding: 10px 22px; cursor: pointer;
+  box-shadow: 0 4px 0 #7e5109;
+}
+#btn-end-turn:hover:not(:disabled) { background: #f39c12; }
+#btn-end-turn:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 2px 0 #7e5109; }
+#btn-end-turn:disabled { background: #555; border-color: #888; box-shadow: none; cursor: default; }
+
+/* ---------- Overlay ---------- */
+.overlay {
+  position: absolute; inset: 0;
+  background: rgba(10, 20, 10, 0.82);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 50;
+}
+.overlay.hidden { display: none; }
+
+.panel {
+  background: #f5f0e1;
+  color: #222;
+  border: 4px solid #f7d774;
+  border-radius: 16px;
+  padding: 26px 34px;
+  text-align: center;
+  max-width: 620px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+.title-kicker { font-size: 12px; font-weight: 800; letter-spacing: 3px; color: #7d6608; }
+.panel h1 { font-size: 52px; font-weight: 900; letter-spacing: 3px; color: #1d2b1f; line-height: 1.05; }
+.title-sub { font-size: 22px; font-weight: 700; color: #6e2c1e; margin-bottom: 10px; }
+.title-desc { font-size: 15px; margin-bottom: 12px; }
+.title-rules {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px;
+  text-align: left; font-size: 14px; margin-bottom: 12px;
+}
+.dot { font-weight: 900; }
+.dot-red { color: #c0392b; } .dot-blue { color: #2471a3; }
+.dot-green { color: #1e8449; } .dot-yellow { color: #b7950b; }
+.title-combo { font-size: 13px; font-weight: 700; color: #555; margin-bottom: 16px; }
+
+.big-btn {
+  background: #1e8449; color: #fff;
+  border: 3px solid #145a32; border-radius: 12px;
+  font-size: 22px; font-weight: 900; letter-spacing: 1px;
+  padding: 12px 34px; cursor: pointer;
+  box-shadow: 0 4px 0 #145a32;
+}
+.big-btn:hover { background: #27ae60; }
+.big-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #145a32; }
+.title-keys { font-size: 12px; color: #777; margin-top: 12px; }
+
+.end-emoji { font-size: 56px; line-height: 1; }
+.win-title { color: #1e8449 !important; }
+.lose-title { color: #c0392b !important; }
+.end-desc { font-size: 16px; margin: 8px 0 18px; }
+
+.confetti {
+  position: absolute; top: -12px;
+  width: 10px; height: 16px;
+  animation: confetti-fall linear forwards;
+  z-index: 60;
+  pointer-events: none;
+}
+@keyframes confetti-fall { to { transform: translateY(740px) rotate(720deg); opacity: 0.8; } }

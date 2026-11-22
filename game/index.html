@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menara Kartu — Duel Benteng</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">MENARA KARTU <span>— Duel Benteng</span></div>
+    <div class="hud">
+      <div class="hud-item" id="round-label">Ronde 1</div>
+      <div class="hud-item hud-energy">
+        <span id="energy-label">Energi 3 / 3</span>
+        <span id="energy-pips"></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="table">
+    <section id="towers-row">
+      <div id="tower-player" class="tower-slot"></div>
+      <div id="center-stage">
+        <div id="intent-box"></div>
+        <div id="center-card"></div>
+        <ul id="log-list"></ul>
+      </div>
+      <div id="tower-enemy" class="tower-slot"></div>
+    </section>
+
+    <section id="enemy-zone">
+      <div class="zone-label">TANGAN LAWAN</div>
+      <div id="enemy-hand"></div>
+    </section>
+
+    <section id="player-zone">
+      <div class="zone-label">TANGANMU — klik kartu untuk memainkannya (tombol 1–5)</div>
+      <div id="player-hand"></div>
+    </section>
+  </main>
+
+  <footer id="bottombar">
+    <div class="hint">Serang 2x berurutan = KOMBO +3 damage &nbsp;•&nbsp; Perisai + Bangun di giliran yang sama = +2 HP ekstra &nbsp;•&nbsp; Jebakan menyambar lawan yang menyerang</div>
+    <button id="btn-end-turn" type="button">AKHIRI GILIRAN ⏎</button>
+  </footer>
+
+  <div id="overlay-title" class="overlay">
+    <div class="panel title-panel">
+      <div class="title-kicker">PERMAINAN KARTU DUEL 1 LAWAN 1</div>
+      <h1>MENARA KARTU</h1>
+      <div class="title-sub">— Duel Benteng —</div>
+      <p class="title-desc">Bangun menaramu, hancurkan menara lawan. Menara yang HP-nya habis duluan kalah.</p>
+      <div class="title-rules">
+        <div><span class="dot dot-red"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3 L21 10 L19 12 L12 5 Z" /><path d="M11 6 L4 13 L6 15 L13 8 Z" /><rect x="3" y="13" width="3" height="8" rx="1" transform="rotate(45 4.5 17)" /></svg></span> <b>Serang</b> — damage ke menara lawan</div>
+        <div><span class="dot dot-blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L20 5 V11 C20 17 16.5 21 12 22 C7.5 21 4 17 4 11 V5 Z" /></svg></span> <b>Perisai</b> — tahan damage giliran ini</div>
+        <div><span class="dot dot-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="5" rx="1" /><rect x="3" y="11" width="8" height="5" rx="1" /><rect x="13" y="11" width="8" height="5" rx="1" /><rect x="3" y="18" width="18" height="5" rx="1" opacity="0.85" /></svg></span> <b>Bangun</b> — pulihkan HP menaramu</div>
+        <div><span class="dot dot-yellow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 L5 13 H11 L9 22 L19 10 H13 Z" /></svg></span> <b>Jebakan</b> — sambat lawan yang menyerang</div>
+      </div>
+      <p class="title-combo">Kombo: 2 Serang berurutan +3 damage • Perisai + Bangun +2 HP ekstra • Baca niat lawan, lalu counter!</p>
+      <button id="btn-start" type="button" class="big-btn">▶ MULAI DUEL</button>
+      <div class="title-keys">Mouse: klik kartu • Keyboard: 1–5 mainkan kartu, Enter akhiri giliran</div>
+    </div>
+  </div>
+
+  <div id="overlay-win" class="overlay hidden">
+    <div class="panel end-panel">
+      <div class="end-emoji">🏆</div>
+      <h1 class="win-title">MENANG!</h1>
+      <p class="end-desc">Menara lawan runtuh! Bentengmu berdiri tegak.</p>
+      <button id="btn-restart-win" type="button" class="big-btn">↻ MAIN LAGI</button>
+      <div class="title-keys">Tekan Enter untuk main lagi</div>
+    </div>
+  </div>
+
+  <div id="overlay-lose" class="overlay hidden">
+    <div class="panel end-panel">
+      <div class="end-emoji">💥</div>
+      <h1 class="lose-title">KALAH</h1>
+      <p class="end-desc">Menaramu runtuh… Susun strategi baru dan coba lagi!</p>
+      <button id="btn-restart-lose" type="button" class="big-btn">↻ COBA LAGI</button>
+      <div class="title-keys">Tekan Enter untuk main lagi</div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
