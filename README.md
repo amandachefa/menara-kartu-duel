@@ -1,3 +1,8 @@
+[README.md](https://github.com/user-attachments/files/35241913/README.md)
+[![make.fun](https://make.fun/badge/best-card-game-20261122-1826.svg)](https://make.fun/bounty/best-card-game-20261122-1826)
+[![rank](https://make.fun/badge/best-card-game-20261122-1826/amandachefa/menara-kartu-duel/rank.svg)](https://make.fun/bounty/best-card-game-20261122-1826)
+[![reward](https://make.fun/badge/best-card-game-20261122-1826/amandachefa/menara-kartu-duel/reward.svg)](https://make.fun/bounty/best-card-game-20261122-1826)
+
 # Make the best card game
 
 ## My entry
